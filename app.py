@@ -12,6 +12,13 @@ def index():
 def submit():
     if request.method == 'POST':
         customer = request.form['customer']
+        dealer = request.form['dealer']
+        rating = request.form['rating']
+        comments = request.form['comments']
+        # print(customer, dealer, rating, comments)
+        if customer == '' or dealer == '':
+            return render_template('index.html', message='Please enter customer and dealer fields.')
+        return render_template('success.html')
 
 
 if __name__ == '__main__':
