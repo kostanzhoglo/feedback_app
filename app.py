@@ -1,7 +1,22 @@
 from flask import Flask, render_template, request
+# start to implement the database
+from flask_sqlalchemy import SQLAlchemy
 
 # initialize our app
 app = Flask(__name__)
+
+ENV = 'dev'
+
+if ENV == 'dev':
+    app.debug = True
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://[ ]:[ ]/4@localhost/lexus'
+else:
+    app.debug = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = ''
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+db = SQLAlchemy(app)
 
 # Make a route
 @app.route('/')
