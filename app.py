@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request
 # start to implement the database
 from flask_sqlalchemy import SQLAlchemy
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # initialize our app
 app = Flask(__name__)
