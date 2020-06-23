@@ -9,7 +9,7 @@ load_dotenv()
 # print("Value of 'VAR_1' environment variable is: " + str(tester_value))
 
 
-tester_key_2 = 'VAR_1'
-tester_value_2 = os.getenv(tester_key_2)
 
-print("Value of 'VAR_1' environment variable is: " + str(tester_value_2))
+tester_value_2 = os.getenv('VAR_1')
+
+print(tester_value_2) 

@@ -5,6 +5,8 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
+OWNER = os.getenv('OWNER')
+DB_PASSWORD = os.getenv('DB_PASSWORD')
 
 # initialize our app
 app = Flask(__name__)
@@ -13,7 +15,7 @@ ENV = 'dev'
 
 if ENV == 'dev':
     app.debug = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://[ ]:[ ]/4@localhost/lexus'
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://' + str(OWNER) + ':' + str(DB_PASSWORD) + '/4@localhost/lexus'
 else:
     app.debug = False
     app.config['SQLALCHEMY_DATABASE_URI'] = ''
@@ -41,6 +43,7 @@ def submit():
 
 
 if __name__ == '__main__':
-    # set debug to True when in development. Lets server keep reloading when we make changes.
-    app.debug = True
+    ## set debug to True when in development. Lets server keep reloading when we make changes.
+    # Place this up above in the if ENV clause...
+    # app.debug = True
     app.run()
