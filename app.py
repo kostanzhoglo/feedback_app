@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 # start to implement the database
 from flask_sqlalchemy import SQLAlchemy
+from send_mail import send_mail
 # os and dotenv are so I can access the env variables in this project for pgAdmin
 import os
 from dotenv import load_dotenv
@@ -59,6 +60,7 @@ def submit():
             data = Feedback(customer, dealer, rating, comments)
             db.session.add(data)
             db.session.commit()
+            send_mail(customer, dealer, rating, comments)
             return render_template('success.html')
         return render_template('index.html', message='You have already submitted feedback.')
 
