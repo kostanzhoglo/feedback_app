@@ -21,3 +21,8 @@ def send_mail(customer, dealer, rating, comments):
     msg['Subject'] = "Lexus Feedback"
     msg['From'] = sender_email
     msg['To'] = receiver_email
+
+    # Send email
+    with smtplib.SMTP(smtp_server, port) as server:
+        server.login(login, password)
+        server.send_mail(sender_email, receiver_email, msg.as_string())
