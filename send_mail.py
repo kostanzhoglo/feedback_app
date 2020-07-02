@@ -10,7 +10,7 @@ MAIL_PASSWORD = os.getenv('MAIL_PASSWORD')
 def send_mail(customer, dealer, rating, comments):
     # port relates to mailtrap settings
     port = 2525
-    smtp_server = "smtp.mailtrap.io"
+    smtp_server = 'smtp.mailtrap.io'
     login = str(MAIL_USER)
     password = str(MAIL_PASSWORD)
     message = f"<h3>New Feedback Submission</h3><ul><li>Customer: {customer}</li><li>Dealer: {dealer}</li><li>Rating: {rating}</li><li>Comments: {comments}</li></ul>"
